@@ -25,6 +25,15 @@ bool Input::isKeyDown(int key)
 	return false;
 }
 
+
+bool Input::isKeyPressed(int key) {
+	
+	if (keys[key] && !lastKeys[key]) {
+		return true;
+	}
+	return false;
+}
+
 void Input::setMouseX(int lx)
 {
 	mouse.x = lx;
@@ -69,3 +78,9 @@ bool Input::isMouseRDown()
 	return mouse.right;
 }
 
+void Input::setLastKeys() {
+	for (int i = 0; i<256; i++) {
+		lastKeys[i] = keys[i];
+	}
+
+}
